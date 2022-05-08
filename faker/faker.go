@@ -1,12 +1,27 @@
 package cmd
 
 import (
-	"github.com/brianvoe/gofakeit/v6"
 	"encoding/json"
+	"github.com/brianvoe/gofakeit/v6"
 )
 
-func UserDetails(){
-	
+type Faker struct {
+	Name          string `json:"name"`
+	Gender        string `json:"name"`
+	Email         string `json:"email"`
+	Phone         string `json:"phone"`
+	Country       string `json:"country"`
+	Company       string `json:"company"`
+	UserAgent     string `json:"user_agent"`
+	BirthdayMonth string `json:"birthday_month"`
+}
+
+// type connection struct {
+// 	Clients []*client `json:"Clients"`
+// }
+
+func UserDetails() {
+
 	UserName := gofakeit.Name()
 	Country := gofakeit.Country()
 	Gender := gofakeit.Gender()
@@ -14,5 +29,7 @@ func UserDetails(){
 	Phone := gofakeit.Phone()
 	UserAgent := gofakeit.UserAgent()
 	BirthdayMonth := gofakeit.MonthString()
+
+	// create json Response
 
 }
