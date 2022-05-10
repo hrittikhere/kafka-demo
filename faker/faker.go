@@ -3,24 +3,20 @@ package cmd
 import (
 	"encoding/json"
 	"github.com/brianvoe/gofakeit/v6"
+	"log"
 )
 
 type Faker struct {
 	Name          string `json:"name"`
-	Gender        string `json:"name"`
+	Gender        string `json:"gender"`
 	Email         string `json:"email"`
 	Phone         string `json:"phone"`
 	Country       string `json:"country"`
-	Company       string `json:"company"`
 	UserAgent     string `json:"user_agent"`
 	BirthdayMonth string `json:"birthday_month"`
 }
 
-// type connection struct {
-// 	Clients []*client `json:"Clients"`
-// }
-
-func UserDetails() {
+func GetFakeUser() string {
 
 	UserName := gofakeit.Name()
 	Country := gofakeit.Country()
@@ -30,6 +26,13 @@ func UserDetails() {
 	UserAgent := gofakeit.UserAgent()
 	BirthdayMonth := gofakeit.MonthString()
 
-	// create json Response
+	FakeUser := Faker{UserName, Gender, Email, Phone, Country, UserAgent, BirthdayMonth}
 
+	FakeUserEncoded, err := json.Marshal(FakeUser)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return string(FakeUserEncoded)
 }
