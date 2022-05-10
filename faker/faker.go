@@ -16,7 +16,7 @@ type Faker struct {
 	BirthdayMonth string `json:"birthday_month"`
 }
 
-func GetFakeUser() string {
+func GetFakeUser() []byte {
 
 	UserName := gofakeit.Name()
 	Country := gofakeit.Country()
@@ -34,5 +34,5 @@ func GetFakeUser() string {
 		log.Fatal(err)
 	}
 
-	return string(FakeUserEncoded)
+	return FakeUserEncoded
 }
